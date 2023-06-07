@@ -4,6 +4,7 @@ import { ArtistData } from '../../data/artist-data';
 import { AlbumData } from '../../data/album-data';
 import { TrackData } from '../../data/track-data';
 import { ResourceData } from '../../data/resource-data';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-search',

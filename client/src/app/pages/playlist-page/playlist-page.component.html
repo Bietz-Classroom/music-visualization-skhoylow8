@@ -1,0 +1,14 @@
+<div class="row p-3" *ngIf="playlist">
+    <div class="col-md-3 text-center">
+        <div *ngIf="playlist.imageURL">
+            <img class="image-thumb" src="{{playlist.imageURL}}">
+        </div>
+        <h4 class="pt-2">
+            {{playlist.name}}
+        </h4>
+    </div>
+    <div class="col-md-9">
+        <app-vega-viz class="col-12"></app-vega-viz>
+    </div>
+</div>
+<app-track-list [tracks]="tracks"></app-track-list>

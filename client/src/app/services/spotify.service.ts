@@ -86,4 +86,11 @@ export class SpotifyService {
     //TODO: use the audio features for track endpoint to make a request to express.
     return null as any;
   }
+
+  getPlaylist(id:string):Promise<PlaylistData> {
+    return this.sendRequestToExpress(`/playlist/${id}`).then((data) => {
+      // console.log("In getPlaylist in spotify.service file: " + data)
+      return new PlaylistData(data);
+    });
+  }
 }
