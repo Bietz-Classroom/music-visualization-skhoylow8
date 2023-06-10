@@ -84,7 +84,9 @@ export class SpotifyService {
 
   getAudioFeaturesForTrack(trackId:string):Promise<TrackFeature[]> {
     //TODO: use the audio features for track endpoint to make a request to express.
-    return null as any;
+    return this.sendRequestToExpress(`/track-audio-features/${trackId}`).then((data) => {
+      return [new TrackFeature("Energy", data['energy']), new TrackFeature("Danceability", data['danceability'])];
+    });
   }
 
   getPlaylist(id:string):Promise<PlaylistData> {

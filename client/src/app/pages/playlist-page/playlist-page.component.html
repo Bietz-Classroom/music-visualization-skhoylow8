@@ -1,14 +1,25 @@
-<div class="row p-3" *ngIf="playlist">
-    <div class="col-md-3 text-center">
-        <div *ngIf="playlist.imageURL">
-            <img class="image-thumb" src="{{playlist.imageURL}}">
-        </div>
-        <h4 class="pt-2">
-            {{playlist.name}}
-        </h4>
-    </div>
-    <div class="col-md-9">
-        <app-vega-viz class="col-12"></app-vega-viz>
+<div *ngIf="isLoading && isFetchingFeatures">
+    <div class="d-flex justify-content-center">
+        <h4>Loading...</h4>
     </div>
 </div>
-<app-track-list [tracks]="tracks"></app-track-list>
+<div *ngIf="!isLoading && !isFetchingFeatures">
+    <button class="back-btn" role="button" type="button" (click)="goBack()">
+        <img src="assets/left-arrow.svg" alt="left arrow image">
+    </button>
+    <div class="row p-3" *ngIf="playlist">
+        <div class="col-md-4 text-center">
+            <div *ngIf="playlist.imageURL">
+                <img class="image-thumb" src="{{playlist.imageURL}}">
+            </div>
+            <h4 class="pt-2">
+                <a href="{{playlist.url}}" target="_blank">{{playlist.name}}</a>
+            </h4>
+            <p>Created by: <span>{{playlist.owner.display_name}}</span></p>
+        </div>
+        <div class="col-md-8">
+            <app-vega-viz class="col-12" [data]="data"></app-vega-viz>
+        </div>
+    </div>
+    <app-track-list [tracks]="tracks"></app-track-list>
+</div>

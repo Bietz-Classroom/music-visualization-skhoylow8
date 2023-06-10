@@ -2,3 +2,17 @@
     width: 250px;
     height: 250px;
 }
+
+a:hover {
+	color: white;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+}
+
+.back-btn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}

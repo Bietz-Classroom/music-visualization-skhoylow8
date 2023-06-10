@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import embed from 'vega-embed';
 
 @Component({
@@ -7,22 +7,23 @@ import embed from 'vega-embed';
   styleUrls: ['./vega-viz.component.css']
 })
 export class VegaVizComponent implements OnInit {
+  @Input() data: object;
+
   ngOnInit() {
+    console.log(this.data)
     const spec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 600,
+      "height": 300,
       "description": "A simple bar chart with embedded data.",
-      "title": "Example Vega-lite Chart",
+      "title": "Track Features",
       "data": {
-        "values": [
-          {"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},
-          {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53},
-          {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}
-        ]
+        "values": this.data
       },
-      "mark": "bar",
+      "mark": { "type": "circle", "tooltip": { "content": "data" }},
       "encoding": {
-        "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}},
-        "y": {"field": "b", "type": "quantitative"}
+        "x": {"field": "Energy", "type": "quantitative", "scale": {"type": "linear"}},
+        "y": {"field": "Danceability", "type": "quantitative", "scale": {"type": "linear"}}
       }
     } as const;
 
