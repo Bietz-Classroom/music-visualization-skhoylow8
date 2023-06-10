@@ -8,7 +8,7 @@
         <img src="assets/left-arrow.svg" alt="left arrow image">
     </button>
     <div class="row p-3" *ngIf="playlist">
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center align-items-center">
             <div *ngIf="playlist.imageURL">
                 <img class="image-thumb" src="{{playlist.imageURL}}">
             </div>
@@ -17,8 +17,11 @@
             </h4>
             <p>Created by: <span>{{playlist.owner.display_name}}</span></p>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8" *ngIf="data.length == playlist.tracks.length">
             <app-vega-viz class="col-12" [data]="data"></app-vega-viz>
+        </div>
+        <div class="col-md-8 d-flex justify-content-center align-items-center" *ngIf="data.length < playlist.tracks.length"> 
+            <h4>Loading Track Features...</h4>
         </div>
     </div>
     <app-track-list [tracks]="tracks"></app-track-list>

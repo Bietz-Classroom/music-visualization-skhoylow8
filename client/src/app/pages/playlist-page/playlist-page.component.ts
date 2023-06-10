@@ -32,7 +32,6 @@ export class PlaylistPageComponent implements OnInit {
     getPlaylist() {
         this.spotifyService.getPlaylist(this.id).then((playlist) => {
             this.playlist = playlist;
-            console.log(playlist)
             this.tracks = playlist.tracks.map(item => new TrackData(item['track']));
 
             this.tracks.forEach((track) => {

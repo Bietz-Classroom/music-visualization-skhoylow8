@@ -10,7 +10,6 @@ export class VegaVizComponent implements OnInit {
   @Input() data: object;
 
   ngOnInit() {
-    console.log(this.data)
     const spec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "width": 600,
@@ -18,12 +17,13 @@ export class VegaVizComponent implements OnInit {
       "description": "A simple bar chart with embedded data.",
       "title": "Track Features",
       "data": {
-        "values": this.data
+        "values": this.data,
+        "format": {"type": "json"}
       },
-      "mark": { "type": "circle", "tooltip": { "content": "data" }},
+      "mark": {"type": "circle", "tooltip": {"content": "data"}},
       "encoding": {
-        "x": {"field": "Energy", "type": "quantitative", "scale": {"type": "linear"}},
-        "y": {"field": "Danceability", "type": "quantitative", "scale": {"type": "linear"}}
+        "x": {"field": "Energy", "type": "quantitative", "axis": {"grid": false}},
+        "y": {"field": "Danceability", "type": "quantitative", "axis": {"grid": false}}
       }
     } as const;
 
