@@ -1,7 +1,8 @@
 <div class="search-bar">
     <h1>Search Spotify</h1>
     <div>
-        <input class="col-8" type="text" placeholder="Search for playlists..." [(ngModel)]=searchString (keyup)="textChanged()" (keydown.enter)="search()">
+        <!-- <label for="search">Search Spotify</label> -->
+        <input class="col-8" type="text" name="search" placeholder="Search for playlists..." [(ngModel)]=searchString (keyup)="textChanged()" (keydown.enter)="search()">
         <button class="btn btn-light" (click)="search()">Search</button>
     </div> 
 </div>
@@ -9,7 +10,7 @@
 <div class="card-list" *ngIf="resources">
     <div class="card-container" *ngFor="let res of resources">
         <a routerLink="/playlists/{{res.id}}">
-            <img class="image-thumb" *ngIf="res.imageURL != undefined" src={{res.imageURL}} />
+            <img class="image-thumb" *ngIf="res.imageURL != undefined" src={{res.imageURL}} alt="{{res.description}}"/>
             <h2>{{res.name}}</h2>
             <p>Created by: <span>{{res.owner.display_name}}</span></p>
         </a>

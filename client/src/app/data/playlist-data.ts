@@ -5,11 +5,13 @@ import { TrackData } from './track-data';
 export class PlaylistData extends ResourceData {
     owner: ProfileData[];
 	tracks: TrackData[] | null = null;
+	description: string;
 
 	constructor(objectModel:{}) {
 		super(objectModel);
 		this.category = 'playlist';
         this.owner = objectModel['owner'];
 		this.tracks = objectModel['tracks']['items'];
+		this.description = objectModel['description'];
 	}
 }
