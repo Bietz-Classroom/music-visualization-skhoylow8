@@ -13,7 +13,7 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
+a:hover, a:focus {
 	color: white;
 }
 
@@ -56,6 +56,6 @@ button {
 	transition: transform 0.25s ease-out;
   }
   
-  .card-container:hover {
+  .card-container:hover, .card-container:focus {
 	transform: scale(1.05);
   }

@@ -14,7 +14,7 @@ export class VegaVizComponent implements OnInit {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "width": 600,
       "height": 300,
-      "description": "A simple bar chart with embedded data.",
+      "description": "A scatter plot showing a tracks danceability and energy level.",
       "title": {"text": "Track Features", "color": "#fff", "fontSize": 20},
       "data": {
         "values": this.data,

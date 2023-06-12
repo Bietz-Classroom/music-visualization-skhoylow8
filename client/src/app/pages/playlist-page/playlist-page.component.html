@@ -4,17 +4,17 @@
     </div>
 </div>
 <div *ngIf="!isLoading && !isFetchingFeatures">
-    <button class="back-btn" role="button" type="button" (click)="goBack()">
-        <img src="assets/left-arrow.svg" alt="left arrow image">
+    <button class="back-btn" type="button" (click)="goBack()">
+        <img src="assets/left-arrow.svg" alt="Left arrow image used to go back to search page">
     </button>
     <div class="row p-3" *ngIf="playlist">
         <div class="col-md-4 text-center align-items-center">
             <div *ngIf="playlist.imageURL">
-                <img class="image-thumb" src="{{playlist.imageURL}}">
+                <img class="image-thumb" src="{{playlist.imageURL}}" alt="{{playlist.description==''? playlist.name+' is a playlist of songs.': playlist.description}}">
             </div>
-            <h4 class="pt-2">
+            <h1 class="pt-2">
                 <a href="{{playlist.url}}" target="_blank">{{playlist.name}}</a>
-            </h4>
+            </h1>
             <p>Created by: <span>{{playlist.owner.display_name}}</span></p>
         </div>
         <div class="col-md-8" *ngIf="data.length == playlist.tracks.length">

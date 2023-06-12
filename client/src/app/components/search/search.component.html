@@ -10,7 +10,7 @@
 <div class="card-list" *ngIf="resources">
     <div class="card-container" *ngFor="let res of resources">
         <a routerLink="/playlists/{{res.id}}">
-            <img class="image-thumb" *ngIf="res.imageURL != undefined" src={{res.imageURL}} alt="{{res.description}}"/>
+            <img class="image-thumb" *ngIf="res.imageURL != undefined" src={{res.imageURL}} alt="{{res.description==''? res.name+' is a playlist of songs.': res.description}}"/>
             <h2>{{res.name}}</h2>
             <p>Created by: <span>{{res.owner.display_name}}</span></p>
         </a>
