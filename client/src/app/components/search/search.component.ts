@@ -13,6 +13,7 @@ import { Router } from '@angular/router'
   providers: [ SpotifyService ]
 })
 export class SearchComponent implements OnInit {
+  loading:boolean = false;
   searchString:string;
   searchCategory:string = 'playlist';
   resources:ResourceData[];
@@ -23,8 +24,10 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
+    this.loading = true;
     this.spotifyService.searchFor(this.searchCategory, this.searchString).then((data) => {
       this.resources = data;
+      this.loading = false;
     });
   }
 

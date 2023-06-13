@@ -1,18 +1,23 @@
 <div class="search-bar">
     <h1>Search Spotify</h1>
     <div>
-        <!-- <label for="search">Search Spotify</label> -->
-        <input class="col-8" type="text" name="search" placeholder="Search for playlists..." [(ngModel)]=searchString (keyup)="textChanged()" (keydown.enter)="search()">
+        <input title="Search Spotify" class="col-8" type="text" name="search" placeholder="Search for playlists..." [(ngModel)]=searchString (keyup)="textChanged()" (keydown.enter)="search()">
         <button class="btn btn-light" (click)="search()">Search</button>
     </div> 
 </div>
 
-<div class="card-list" *ngIf="resources">
+<div *ngIf="loading">
+    <div class="d-flex justify-content-center">
+        <h4>Loading...</h4>
+    </div>
+</div>
+
+<div class="card-list" *ngIf="!loading && resources">
     <div class="card-container" *ngFor="let res of resources">
         <a routerLink="/playlists/{{res.id}}">
-            <img class="image-thumb" *ngIf="res.imageURL != undefined" src={{res.imageURL}} alt="{{res.description==''? res.name+' is a playlist of songs.': res.description}}"/>
-            <h2>{{res.name}}</h2>
-            <p>Created by: <span>{{res.owner.display_name}}</span></p>
+            <img class="image-thumb" *ngIf="res.imageURL != undefined" src={{res.imageURL}} alt="{{res.description==''? res.name +' cover image.': res.description}}"/>
+            <h2 *ngIf="res.name">{{res.name}}</h2>
+            <p *ngIf="res.owner.display_name">Created by: <span>{{res.owner.display_name}}</span></p>
         </a>
     </div>
 </div>

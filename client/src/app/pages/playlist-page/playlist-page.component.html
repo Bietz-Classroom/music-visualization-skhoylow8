@@ -12,7 +12,7 @@
             <div *ngIf="playlist.imageURL">
                 <img class="image-thumb" src="{{playlist.imageURL}}" alt="{{playlist.description==''? playlist.name+' is a playlist of songs.': playlist.description}}">
             </div>
-            <h1 class="pt-2">
+            <h1 class="pt-2" *ngIf="playlist.name">
                 <a href="{{playlist.url}}" target="_blank">{{playlist.name}}</a>
             </h1>
             <p>Created by: <span>{{playlist.owner.display_name}}</span></p>

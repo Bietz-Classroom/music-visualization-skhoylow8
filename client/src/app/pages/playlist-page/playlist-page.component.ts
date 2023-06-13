@@ -45,8 +45,8 @@ export class PlaylistPageComponent implements OnInit {
 
                 // get track features
                 this.spotifyService.getAudioFeaturesForTrack(track.id).then((data) => {
-                    obj["Energy"] = data[0]["percent"]*100;
-                    obj["Danceability"] = data[1]["percent"]*100;
+                    obj["Energy"] = Math.round(data[0]["percent"]*100);
+                    obj["Danceability"] = Math.round(data[1]["percent"]*100);
                     this.data.push(obj);
                 })
                 this.isFetchingFeatures = false;
